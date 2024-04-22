@@ -1,0 +1,59 @@
+﻿@model EntertainmentAgency.Models.Entertainer
+
+@{
+    ViewData["Title"] = "Create A New Entertainer";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="Create" method="post">
+    @* Render input fields for each property you want to be editable, excluding EntertainerId *@
+    <div class="form-group">
+        <label asp-for="EntStageName" class="control-label"></label>
+        <input asp-for="EntStageName" class="form-control" />
+    </div>
+
+    @* Repeat this block for other fields such as EntSsn, EntStreetAddress, etc. *@
+    <div class="form-group">
+        <label asp-for="EntSsn" class="control-label"></label>
+        <input asp-for="EntSsn" class="form-control" />
+    </div>
+
+    @* ... include other fields ... *@
+    <div class="form-group">
+        <label asp-for="EntStreetAddress" class="control-label"></label>
+        <input asp-for="EntStreetAddress" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntCity" class="control-label"></label>
+        <input asp-for="EntCity" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntState" class="control-label"></label>
+        <input asp-for="EntState" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntZipCode" class="control-label"></label>
+        <input asp-for="EntZipCode" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntPhoneNumber" class="control-label"></label>
+        <input asp-for="EntPhoneNumber" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntWebPage" class="control-label"></label>
+        <input asp-for="EntWebPage" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="EntEmailAddress" class="control-label"></label>
+        <input asp-for="EntEmailAddress" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

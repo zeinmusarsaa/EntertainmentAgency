@@ -19,11 +19,6 @@ namespace EntertainmentAgency.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
         public IActionResult Entertainers()
         {
             var entertainers = repository.GetAllEntertainers();
@@ -40,9 +35,26 @@ namespace EntertainmentAgency.Controllers
             var entertainer = repository.GetEntertainerById(id);
             if (entertainer == null)
             {
-                return NotFound(); // Return a not found response if the entertainer doesn't exist
+                return NotFound(); 
             }
-            return View(entertainer); // Pass the entertainer object to the view
+            return View(entertainer); 
+        }
+
+        public IActionResult Create()
+        {
+            return View(new Entertainer());
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Entertainer entertainer)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.AddEntertainer(entertainer);
+                return RedirectToAction(nameof(Entertainers)); 
+            }
+            return View(entertainer);
         }
 
         public IActionResult Edit(int id)
@@ -61,7 +73,7 @@ namespace EntertainmentAgency.Controllers
             if (ModelState.IsValid)
             {
                 repository.UpdateEntertainer(entertainer);
-                return RedirectToAction(nameof(Index)); // Adjust as needed
+                return RedirectToAction(nameof(Index));
             }
             return View(entertainer);
         }
