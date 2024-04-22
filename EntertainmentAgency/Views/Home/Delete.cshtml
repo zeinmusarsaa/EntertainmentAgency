@@ -1,0 +1,21 @@
+﻿@model EntertainmentAgency.Models.Entertainer
+
+@{
+    ViewData["Title"] = "Delete Entertainer";
+}
+
+<h1>Delete Entertainer</h1>
+
+<h3>Are you sure you want to delete this entertainer?</h3>
+<div>
+    <h4>@Model.EntStageName</h4>
+    <dl class="row">
+        <!-- Display other details you want to confirm before deletion -->
+    </dl>
+
+    <form asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="EntertainerId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

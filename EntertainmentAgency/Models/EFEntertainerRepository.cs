@@ -13,7 +13,7 @@ public class EFEntertainerRepository : IEntertainerRepository
 
     public IEnumerable<Entertainer> GetAllEntertainers()
     {
-        return context.Entertainers;
+        return context.Entertainers.ToList() ?? new List<Entertainer>();
     }
 
     public Entertainer GetEntertainerById(int entertainerId)

@@ -1,5 +1,29 @@
-﻿@{
+﻿@model IEnumerable<EntertainmentAgency.Models.Entertainer>
+
+@{
     ViewData["Title"] = "Entertainers";
 }
 
-@*  list of the stage names of the potential entertainers to book. *@
+<h2>@ViewData["Title"]</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Stage Name</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entertainer in Model)
+        {
+            <tr>
+                <td>@entertainer.EntStageName</td>
+                <td>
+                    <a asp-controller="Home" asp-action="EntertainerDetails" asp-route-id="@entertainer.EntertainerId" class="btn btn-primary">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-controller="Entertainers" asp-action="Create" class="btn btn-success">Add Entertainer</a>
